@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+const pdf = '/menu.pdf';
+---
+<Layout title="Menu" description="Our current food and drinks menu.">
+  <h1>Menu</h1>
+  <p class="intro">
+    Our menu changes with the seasons.
+    <a href={pdf} target="_blank" rel="noopener">Open it in a new tab</a> or
+    <a href={pdf} download>download the PDF</a>.
+  </p>
+
+  <div class="frame">
+    <object data={`${pdf}#view=FitH`} type="application/pdf" aria-label="Menu PDF">
+      <p class="fallback">
+        Your browser can't show the menu here.
+        <a href={pdf} download>Download the PDF</a> instead.
+      </p>
+    </object>
+  </div>
+</Layout>
+
+<style>
+  .intro { margin-bottom: 2rem; }
+  .frame { border: 1px solid var(--brass); padding: .5rem; background: var(--paper); }
+  object { display: block; width: 100%; height: min(85vh, 60rem); min-height: 28rem; }
+  .fallback { padding: 2rem; }
+</style>

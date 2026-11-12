@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+---
+<Layout>
+  <section class="hero">
+    <h1>Good food, slow evenings, a proper drink.</h1>
+    <p class="lede">
+      {site.name} is a neighbourhood kitchen and bar serving seasonal plates,
+      a short wine list and cocktails made the careful way.
+    </p>
+    <p class="actions">
+      <a class="btn" href="/menu">See the menu</a>
+      <a class="plain" href="/contact">Book a table</a>
+    </p>
+  </section>
+
+  <section class="trio">
+    <article>
+      <h2>The kitchen</h2>
+      <p>Short menu, changed with the season. Most of what we serve comes from within an hour of the door.</p>
+    </article>
+    <article>
+      <h2>The bar</h2>
+      <p>Classic cocktails, local beer on tap and a wine list small enough to read in one go.</p>
+    </article>
+    <article>
+      <h2>The room</h2>
+      <p>Low lights, long tables and a few quiet corners. Walk-ins are always welcome.</p>
+    </article>
+  </section>
+
+  <section class="hours">
+    <h2>Open this week</h2>
+    <dl>
+      {site.hours.map((h) => (<><dt>{h.days}</dt><dd>{h.time}</dd></>))}
+    </dl>
+    <p><a href="/info">More about us and how to find us</a></p>
+  </section>
+</Layout>
+
+<style>
+  .hero { padding: clamp(2rem, 8vw, 6rem) 0 4rem; max-width: 52rem; }
+  .hero h1 { font-weight: 300; font-style: italic; }
+  .lede { font-size: 1.25rem; color: var(--ink-soft); }
+  .actions { display: flex; gap: 1.75rem; align-items: center; margin-top: 2rem; }
+  .plain { font-family: var(--serif); font-style: italic; font-size: 1.2rem; }
+  .trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 3rem; padding: 3rem 0; border-top: 1px solid var(--brass); }
+  .hours { padding-top: 3rem; border-top: 1px solid var(--brass); }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: .5rem 3rem; margin: 1.5rem 0; }
+  dt { font-family: var(--serif); font-size: 1.15rem; }
+  dd { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 480px) { dl { grid-template-columns: 1fr; gap: 0; } dd { margin-bottom: .75rem; } }
+</style>

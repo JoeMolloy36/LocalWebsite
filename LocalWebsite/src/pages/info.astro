@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+---
+<Layout title="Info" description={`Opening hours, address and about ${site.name}.`}>
+  <h1>Info</h1>
+
+  <div class="grid">
+    <section>
+      <h2>About us</h2>
+      <p>
+        {site.name} opened as a small family-run kitchen and has grown into a place people
+        come back to. We cook with what is in season, pour honest drinks and keep the
+        room comfortable.
+      </p>
+      <p>
+        Please tell us about allergies when you book or order. We are happy to adapt
+        dishes where we can, and we have vegetarian and gluten-free options every day.
+      </p>
+    </section>
+
+    <section>
+      <h2>Opening hours</h2>
+      <dl>
+        {site.hours.map((h) => (<><dt>{h.days}</dt><dd>{h.time}</dd></>))}
+      </dl>
+      <p class="note">{site.kitchenNote}</p>
+    </section>
+
+    <section>
+      <h2>Find us</h2>
+      <address>
+        {site.address.map((line) => (<>{line}<br /></>))}
+      </address>
+      <p>Step-free entrance at the front. Bike racks outside, and a bus stop two minutes away.</p>
+    </section>
+
+    <section>
+      <h2>Good to know</h2>
+      <p>Groups of six or more should book ahead. Dogs are welcome in the bar area. We take cards and cash.</p>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 3rem 4rem; margin-top: 2.5rem; }
+  section { border-top: 1px solid var(--brass); padding-top: 1.5rem; }
+  address { font-style: normal; font-size: 1.15rem; margin-bottom: 1rem; }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 2rem; margin: 0 0 1rem; }
+  dt { font-family: var(--serif); }
+  dd { margin: 0; color: var(--ink-soft); }
+  .note { color: var(--ink-soft); font-style: italic; }
+</style>

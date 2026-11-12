@@ -1,0 +1,14 @@
+---
+import { site } from '../data/site';
+---
+<footer>
+  <p class="line">{site.name}, {site.address[0]}, {site.address[1]}</p>
+  <p class="line"><a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a> · <a href={`mailto:${site.email}`}>{site.email}</a></p>
+  <p class="small">&copy; {new Date().getFullYear()} {site.name}</p>
+</footer>
+<style>
+  footer { margin-top: 6rem; padding: 2.5rem 1rem 3rem; text-align: center; border-top: 1px solid var(--brass); color: var(--ink-soft); }
+  .line { margin: .2rem auto; max-width: none; }
+  .small { margin: 1.25rem auto 0; font-size: .85rem; max-width: none; }
+  a { color: inherit; }
+</style>

@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+// Replace with your own form endpoint (Formspree, Netlify Forms, Getform, etc.)
+const formAction = 'https://formspree.io/f/your-form-id';
+---
+<Layout title="Contact" description={`Book a table or get in touch with ${site.name}.`}>
+  <h1>Contact</h1>
+
+  <div class="grid">
+    <section class="details">
+      <h2>Get in touch</h2>
+      <p>For bookings, private hire or anything else, call or write and we will reply within a day.</p>
+      <p>
+        <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a><br />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+      <address>
+        {site.address.map((line) => (<>{line}<br /></>))}
+      </address>
+    </section>
+
+    <form action={formAction} method="POST">
+      <label>Name
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label>Email
+        <input type="email" name="email" autocomplete="email" required />
+      </label>
+      <label>Message
+        <textarea name="message" rows="6" placeholder="Date, time and party size if you are booking" required></textarea>
+      </label>
+      <button class="btn" type="submit">Send message</button>
+    </form>
+  </div>
+</Layout>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 3rem 5rem; margin-top: 2.5rem; }
+  .details { border-top: 1px solid var(--brass); padding-top: 1.5rem; }
+  address { font-style: normal; margin-top: 1.5rem; color: var(--ink-soft); }
+  form { display: grid; gap: 1.25rem; border-top: 1px solid var(--brass); padding-top: 1.5rem; }
+  label { display: grid; gap: .35rem; font-family: var(--serif); font-size: 1.05rem; }
+  input, textarea { font: 1rem var(--sans); color: var(--ink); background: var(--paper); border: 1px solid var(--ink-soft); border-radius: 2px; padding: .7rem .8rem; width: 100%; }
+  button { justify-self: start; }
+</style>
