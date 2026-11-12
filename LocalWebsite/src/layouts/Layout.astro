@@ -3,11 +3,11 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../data/site';
 interface Props { title?: string; description?: string }
-const { title, description = `${site.name}: ${site.tagline}.` } = Astro.props;
-const fullTitle = title ? `${title} | ${site.name}` : site.name;
+const { title, description = `${site.fullName} in ${site.town}, Co. Longford. A family run bar and restaurant on the banks of the River Shannon.` } = Astro.props;
+const fullTitle = title ? `${title} | ${site.fullName}` : `${site.fullName}, ${site.town}`;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en-IE">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,28 +28,29 @@ const fullTitle = title ? `${title} | ${site.name}` : site.name;
 
 <style is:global>
   :root {
-    --plaster: #dfe5dd;
-    --paper: #eef1ea;
-    --ink: #2b1428;
-    --ink-soft: #5d4a5a;
-    --brass: #a9772f;
-    --pear: #6f8a4e;
+    color-scheme: dark;
+    --bg: #19191b;
+    --panel: #242427;
+    --text: #ebe7dc;
+    --text-soft: #a4a29b;
+    --gold: #c8a24c;
     --serif: 'Fraunces', Georgia, serif;
     --sans: 'Instrument Sans', system-ui, sans-serif;
   }
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--plaster); color: var(--ink); font-family: var(--sans); font-size: 1.05rem; line-height: 1.65; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 1.05rem; line-height: 1.65; }
   main { max-width: 68rem; margin: 0 auto; padding: 3rem clamp(1rem, 4vw, 3rem) 0; }
   h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.1; margin: 0 0 1rem; font-variation-settings: 'SOFT' 100; }
   h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); }
   h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
   p { max-width: 60ch; }
-  a { color: var(--ink); text-decoration-color: var(--brass); text-underline-offset: .25em; }
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
-  .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: var(--paper); padding: .6rem 1rem; z-index: 10; }
+  a { color: var(--text); text-decoration-color: var(--gold); text-underline-offset: .25em; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--gold); color: var(--bg); padding: .6rem 1rem; z-index: 10; }
   .skip:focus { left: 0; }
-  .btn { display: inline-block; background: var(--ink); color: var(--paper); padding: .8rem 1.6rem; border: 0; border-radius: 999px; font: inherit; text-decoration: none; cursor: pointer; transition: background .2s; }
-  .btn:hover { background: var(--brass); }
+  .btn { display: inline-block; background: var(--gold); color: var(--bg); font-weight: 500; padding: .8rem 1.6rem; border: 0; border-radius: 999px; font: inherit; text-decoration: none; cursor: pointer; transition: background .2s; }
+  .btn:hover { background: var(--text); }
+  ::selection { background: var(--gold); color: var(--bg); }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
 </style>

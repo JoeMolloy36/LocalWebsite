@@ -1,6 +1,6 @@
-# LocalWebsite
+# Adie's Bar & Restaurant, Lanesborough
 
-Astro site for a restaurant / bar. Four pages: Home, Info, Menu (PDF), Contact.
+Astro site: Home, Info, Menu (PDF) and Contact.
 
 ```
 npm install
@@ -9,7 +9,8 @@ npm run build
 ```
 
 ## Things to edit
-- Restaurant name, address, hours, phone: `src/data/site.ts`
-- Menu: replace `public/menu.pdf` with your real menu (keep the filename)
-- Contact form: set the `action` URL in `src/pages/contact.astro` (e.g. a Formspree endpoint)
+- Name, address, phone, email, social links, opening hours: `src/data/site.ts`
+  (while `hours` is empty the site points people to Instagram / phone)
+- Menu: replace `public/menu.pdf` (keep the filename)
+- Contact form: set `formAction` in `src/pages/contact.astro` (e.g. a Formspree endpoint)
 - Colours and fonts: CSS variables at the top of `src/layouts/Layout.astro`
